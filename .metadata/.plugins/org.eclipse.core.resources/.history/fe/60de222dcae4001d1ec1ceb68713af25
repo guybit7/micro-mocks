@@ -1,0 +1,9 @@
+package com.msi.micromocks.feignclients;
+
+import org.springframework.cloud.netflix.feign.FeignClient;
+
+@FeignClient
+public interface DeveloperFeignClient {
+
+	public 
+}

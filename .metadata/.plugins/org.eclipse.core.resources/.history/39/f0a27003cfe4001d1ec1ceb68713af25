@@ -1,0 +1,36 @@
+package com.msi.micromocks.app;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@SpringBootApplication
+@ComponentScan({"com.msi.micromocks.controller", "com.msi.micromocks.service"})
+@EntityScan("com.msi.micromocks.entity")
+@EnableJpaRepositories("com.msi.micromocks.repository")
+@EnableFeignClients("com.msi.micromocks.feignclients")
+public class MainServiceApplication {
+
+	
+	@Value("${developer.service.url}")
+	private String developerServiceUrl;
+	
+	public static void main(String[] args) {
+		SpringApplication.run(MainServiceApplication.class, args);
+	}
+
+	
+	@Bean
+	public WebClient webClient () {
+		WebClient webClient = WebClient.builder()
+				.baseUrl(developerServiceUrl).build();
+		
+		return webClient;
+	}
+}

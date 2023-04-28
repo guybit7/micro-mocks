@@ -1,0 +1,7 @@
+package com.msi.micromocks.infra;
+
+import com.msi.micromocks.infra.dto.BaseAbstractDTO;
+
+public interface BaseBl <T extends BaseAbstractDTO<P>, P> extends BaseAbstractBL<P> {
+
+}

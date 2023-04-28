@@ -1,0 +1,5 @@
+package com.msi.micromocks.controller;
+
+public class MockController {
+
+}

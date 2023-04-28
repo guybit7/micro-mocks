@@ -1,0 +1,15 @@
+package com.msi.micromocks.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.msi.micromocks.repository.MocksRepository;
+
+@Service
+public class MocksService {
+
+	@Autowired
+	MocksRepository mocksRepository;
+	
+	
+}

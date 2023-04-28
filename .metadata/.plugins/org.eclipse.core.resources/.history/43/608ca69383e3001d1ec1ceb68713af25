@@ -1,0 +1,29 @@
+package com.msi.micromocks.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.msi.micromocks.dto.MockControllerDto;
+import com.msi.micromocks.service.MocksService;
+
+@RestController
+@RequestMapping("/api/main")
+public class MainController {
+	
+	@Autowired
+	MocksService mocksService;
+
+	public MainController() {
+		System.out.println("CTRL");		
+	}
+	
+	@GetMapping("/test")
+	public String getTest() {
+//		return mocksService.getbyId(id);
+		return "HELLO";
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.msi.micromocks.feignclients;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.context.annotation.Bean;
+
+import feign.okhttp.OkHttpClient;
+
+public class DevSerConfiguration {
+
+    @Bean
+    public OkHttpClient client() {
+        return new OkHttpClient();
+    }
+    
+}

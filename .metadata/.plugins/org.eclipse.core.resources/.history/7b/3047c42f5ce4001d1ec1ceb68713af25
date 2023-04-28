@@ -1,0 +1,5 @@
+package com.msi.micromocks.infra;
+
+public interface BaseBl {
+
+}

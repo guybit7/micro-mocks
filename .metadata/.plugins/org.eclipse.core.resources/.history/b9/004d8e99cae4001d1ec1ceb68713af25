@@ -1,0 +1,55 @@
+package com.msi.micromocks.dto;
+
+import com.msi.micromocks.entity.Mock;
+
+public class MockControllerDto {
+
+	private Long id;
+	
+	private String endpoint;
+
+	private String value;
+
+	private long developer_id;
+
+	public MockControllerDto(Mock mock) {
+		this.id = mock.getId();
+		this.endpoint = mock.getEndpoint();
+		this.value = mock.getValue();
+		this.developer_id = mock.getDeveloper_id();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getEndpoint() {
+		return endpoint;
+	}
+
+	public void setEndpoint(String endpoint) {
+		this.endpoint = endpoint;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	public long getDeveloper_id() {
+		return developer_id;
+	}
+
+	public void setDeveloper_id(long developer_id) {
+		this.developer_id = developer_id;
+	}
+
+	
+}

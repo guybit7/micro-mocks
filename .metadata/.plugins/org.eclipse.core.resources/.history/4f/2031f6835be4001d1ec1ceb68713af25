@@ -1,0 +1,5 @@
+package com.msi.micromocks.infra.dto;
+
+public abstract class BaseAbstractDTO {
+
+}

@@ -1,0 +1,30 @@
+package com.msi.micromocks.feignclients;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.cloud.openfeign.support.SpringEncoder;
+
+import com.msi.micromocks.dto.DeveloperControllerDTO;
+
+import feign.codec.Encoder;
+import feign.form.spring.SpringFormEncoder;
+
+@FeignClient(url = "${developer.service.url}",  value = "developer-service", path = "/api/developer")
+public interface DeveloperFeignClient {
+
+	@GetMapping("/{id}")
+	public DeveloperControllerDTO getById(@PathVariable long id);
+}
+
+class FormFeignEncoderConfig {
+
+    @Bean
+    public Encoder encoder(ObjectFactory<HttpMessageConverters> converters) {
+        return new SpringFormEncoder(new SpringEncoder(converters));
+    }
+
+}

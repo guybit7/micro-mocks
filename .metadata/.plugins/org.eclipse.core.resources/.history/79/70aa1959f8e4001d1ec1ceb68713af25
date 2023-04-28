@@ -1,0 +1,8 @@
+package com.msi.micromocks.repository;
+
+public class Snippet {
+	public static void main(String[] args) {
+		dependencyManagement
+	}
+}
+

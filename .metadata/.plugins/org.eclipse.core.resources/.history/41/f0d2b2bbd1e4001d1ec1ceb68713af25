@@ -1,0 +1,5 @@
+package com.msi.micromocks.feignclients;
+
+public class DevSerLoadBalConfig {
+
+}

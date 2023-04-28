@@ -1,0 +1,29 @@
+package com.msi.micromocks.infra.dto;
+
+import java.io.Serializable;
+
+public abstract class BaseAbstractDTO<P> implements Serializable {
+
+	@Override
+	public String toString() {
+		return "BaseAbstractDTO [version=" + version + ", id=" + id + "]";
+	}
+
+	private static final long serialVersionUID = -1705309340267574511L;
+
+	private Long version;
+	private P id;
+	
+	public P getId() {
+		return id;
+	}
+
+	public void setId(P id) {
+		this.id = id;
+	}
+
+	public Long getVersion() {
+		return version;
+	}
+	
+}

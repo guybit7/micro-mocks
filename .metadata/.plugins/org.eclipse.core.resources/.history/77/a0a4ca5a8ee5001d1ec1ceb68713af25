@@ -1,0 +1,5 @@
+package com.msi.mickmocks.controller;
+
+public class TestController {
+
+}
