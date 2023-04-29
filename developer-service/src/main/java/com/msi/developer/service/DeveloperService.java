@@ -20,8 +20,5 @@ public class DeveloperService {
 		DeveloperControllerDTO developerControllerDTO = new DeveloperControllerDTO(dev);
 		return developerControllerDTO;
 	}
-	
-	public ArrayList<DeveloperControllerDTO> getAllByDeveloperId(long devId) {
-		ArrayList<DeveloperControllerDTO> = developerRepository.getBy
-	}
+
 }
