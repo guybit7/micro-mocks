@@ -1,5 +1,7 @@
 package com.msi.micromocks.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -32,7 +34,7 @@ public class MocksService {
 		Mock mock = mocksRepository.findById(id).get();
 		MockControllerDto controllerDto = new MockControllerDto(mock);
 //		System.out.println(developerFeignClient.getById(mock.getDeveloper_id()));
-		controllerDto.setDeveloper(developerFeignClient.getById(mock.getDeveloper_id()));
+		controllerDto.setDeveloper(developerFeignClient.getById(mock.getDeveloperId()));
 //		controllerDto.setDeveloper(getDeveloperById(mock.getDeveloper_id()));
 		return controllerDto;
 	}
@@ -43,6 +45,10 @@ public class MocksService {
 		.retrieve().bodyToMono(DeveloperControllerDTO.class);
 		
 		return developerControllerDTO.block();
+	}
+
+	public ArrayList<Mock> getByDeveloperId(long id) {
+		return mocksRepository.findAllByDeveloperId(id);
 	}
 	
 }

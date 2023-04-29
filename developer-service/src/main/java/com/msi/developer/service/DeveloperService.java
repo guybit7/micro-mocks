@@ -1,5 +1,7 @@
 package com.msi.developer.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,9 @@ public class DeveloperService {
 		Developer dev = developerRepository.findById(id).get();
 		DeveloperControllerDTO developerControllerDTO = new DeveloperControllerDTO(dev);
 		return developerControllerDTO;
+	}
+	
+	public ArrayList<DeveloperControllerDTO> getAllByDeveloperId(long devId) {
+		ArrayList<DeveloperControllerDTO> = developerRepository.getBy
 	}
 }
