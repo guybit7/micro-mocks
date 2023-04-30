@@ -2,6 +2,7 @@ package com.msi.micromocks.service;
 
 import java.util.ArrayList;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -26,13 +27,17 @@ public class MocksService {
 	@Autowired
 	WebClient webClient;
 	
+	DozerBeanMapper mapper = new DozerBeanMapper();
+
 	public MocksService() {
 		System.out.println("MocksService");		
 	}
 	
 	public MockControllerDto getbyId(long id) {
 		Mock mock = mocksRepository.findById(id).get();
-		MockControllerDto controllerDto = new MockControllerDto(mock);
+		System.out.println("BEFORE MAPPER");
+		MockControllerDto controllerDto = mapper.map(mock, MockControllerDto.class);
+//		MockControllerDto controllerDto = new MockControllerDto(mock);
 //		System.out.println(developerFeignClient.getById(mock.getDeveloper_id()));
 		controllerDto.setDeveloper(developerFeignClient.getById(mock.getDeveloperId()));
 //		controllerDto.setDeveloper(getDeveloperById(mock.getDeveloper_id()));

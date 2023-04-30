@@ -12,6 +12,10 @@ public class MockControllerDto {
 
 	private DeveloperControllerDTO developer;
 
+	public MockControllerDto() {
+		
+	}
+	
 	public MockControllerDto(Mock mock) {
 		this.id = mock.getId();
 		this.endpoint = mock.getEndpoint();

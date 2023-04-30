@@ -22,6 +22,10 @@ public class Mock {
 	@Column(name = "value")
 	private String value;
 
+	public Mock() {
+		
+	}
+	
 	@Column(name = "developer_id")
 	private long developerId;
 
