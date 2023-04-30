@@ -51,6 +51,10 @@
 		    <artifactId>spring-cloud-starter-openfeign</artifactId>
 	        <version>4.0.0</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.liquibase</groupId>
+		    <artifactId>liquibase-core</artifactId>
+		</dependency>
 	</dependencies>
 		<dependencyManagement>
 		<dependencies>
@@ -69,6 +73,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<configuration>
+					<propertyFile>src/main/resources/application.properties</propertyFile>
+					<propertyFileWillOverride>true</propertyFileWillOverride>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
