@@ -1,6 +1,7 @@
 package com.msi.micromocks.service;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.msi.micromocks.dto.DeveloperControllerDTO;
 import com.msi.micromocks.dto.MockControllerDto;
 import com.msi.micromocks.entity.Mock;
 import com.msi.micromocks.feignclients.DeveloperFeignClient;
+import com.msi.micromocks.infra.encapsulate.BusinessException;
 import com.msi.micromocks.repository.MocksRepository;
 
 import reactor.core.publisher.Mono;
@@ -34,7 +36,13 @@ public class MocksService {
 	}
 	
 	public MockControllerDto getbyId(long id) {
-		Mock mock = mocksRepository.findById(id).get();
+		Mock mock = null;
+		try {
+			mock = mocksRepository.findById(id).get();			
+		} catch (NoSuchElementException e) {
+			throw new BusinessException("id- "+id+" not found");
+		}
+
 		System.out.println("BEFORE MAPPER");
 		MockControllerDto controllerDto = mapper.map(mock, MockControllerDto.class);
 //		MockControllerDto controllerDto = new MockControllerDto(mock);

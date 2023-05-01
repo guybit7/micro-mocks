@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
-@ComponentScan({"com.msi.micromocks.controller", "com.msi.micromocks.service"})
+@ComponentScan({"com.msi.micromocks.controller", "com.msi.micromocks.service", "com.msi.micromocks.infra.encapsulate"})
 @EntityScan("com.msi.micromocks.entity")
 @EnableJpaRepositories("com.msi.micromocks.repository")
 @EnableFeignClients("com.msi.micromocks.feignclients")
