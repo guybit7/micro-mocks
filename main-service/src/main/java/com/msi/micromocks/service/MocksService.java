@@ -63,5 +63,11 @@ public class MocksService {
 	public ArrayList<Mock> getByDeveloperId(long id) {
 		return mocksRepository.findAllByDeveloperId(id);
 	}
+
+	public MockControllerDto deleteById(long id) {
+		MockControllerDto theMockForDelete = getbyId(id);
+		mocksRepository.deleteById(id);
+		return theMockForDelete;
+	}
 	
 }

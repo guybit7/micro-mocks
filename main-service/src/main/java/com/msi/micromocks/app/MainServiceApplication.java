@@ -12,12 +12,19 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
 @ComponentScan({"com.msi.micromocks.controller", "com.msi.micromocks.service", "com.msi.micromocks.infra.encapsulate"})
 @EntityScan("com.msi.micromocks.entity")
 @EnableJpaRepositories("com.msi.micromocks.repository")
 @EnableFeignClients("com.msi.micromocks.feignclients")
 @ImportAutoConfiguration({FeignAutoConfiguration.class})
+@EnableSwagger2
 public class MainServiceApplication {
 
 	
@@ -36,4 +43,14 @@ public class MainServiceApplication {
 		
 		return webClient;
 	}
+	
+    @Bean
+    public Docket api() { 
+        return new Docket(DocumentationType.SWAGGER_2)  
+          .select()                                  
+          .apis(RequestHandlerSelectors.any())              
+          .paths(PathSelectors.any())                          
+          .build();                                           
+    }
+
 }
