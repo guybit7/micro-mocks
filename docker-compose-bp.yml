@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+
+  eureka-server:
+    container_name: eureka-module
+    image: guybiton7/eureka-server:0.0.1-SNAPSHOT
+    ports: 
+      - "8761:8761"
+    networks:
+      - gb-server
+    
+  gateway:
+    container_name: gateway
+    image: guybiton7/gateway:0.0.1-SNAPSHOT
+    ports: 
+      - "9090:9090"
+    networks:
+      - gb-server  
+
+ 
+networks:
+    gb-server:
