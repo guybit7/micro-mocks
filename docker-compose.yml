@@ -12,13 +12,42 @@ services:
       - eureka-server
     environment:
       EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://eureka-server:8761/eureka
-
+      
   eureka-server:
     image: guybiton7/eureka-server:0.0.1-SNAPSHOT
     ports: 
       - "8761:8761"
     networks:
       - gb-network
+  
+  developer-service:
+    container_name: developer-module
+    image: guybiton7/developer-service:0.0.1-SNAPSHOT
+    ports:
+      - "8082:8082"
+    restart: always
+    networks:
+      - gb-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/micromocks?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      EUREKA.CLIENT.SERVICEURL.DEFAULTZONE: http://eureka-server:8761/eureka
+    depends_on:
+      - mysqldb
+      - eureka-server
           
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: micromocks
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    networks:
+      - gb-network
+      
 networks:
   gb-network:
