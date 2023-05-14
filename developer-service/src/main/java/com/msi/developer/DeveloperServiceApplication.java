@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"com.msi.developer.controller", "com.msi.developer.service"})
+@ComponentScan({"com.msi.developer.controller", "com.msi.developer.service", "com.msi.developer.config"})
 @EntityScan("com.msi.developer.entity")
 @EnableJpaRepositories("com.msi.developer.repository")
 public class DeveloperServiceApplication {
