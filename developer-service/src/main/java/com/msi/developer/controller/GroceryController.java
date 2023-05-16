@@ -7,20 +7,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.msi.developer.dto.DeveloperControllerDTO;
-import com.msi.developer.service.DeveloperService;
+import com.msi.developer.dto.GroceryItemControllerDTO;
+import com.msi.developer.service.GroceryService;
+
 
 @RestController
-@RequestMapping("/api/developer")
-public class DeveloperController {
+@RequestMapping("/api/grocery")
+public class GroceryController {
 	
 	@Autowired
-	DeveloperService developerService;
+	GroceryService groceryService;
+	
+	@GetMapping
+	public void save() {
+		System.out.println("grocery ctrl");
+		groceryService.saveGrocery();
+	}
 	
 	@GetMapping("/{id}")
-	public DeveloperControllerDTO getById(@PathVariable long id) {
-		System.out.println(id);
-		return developerService.getById(id);
+	public GroceryItemControllerDTO getById(@PathVariable String id) {
+		return groceryService.getById(id);
 	}
+	
 	
 }

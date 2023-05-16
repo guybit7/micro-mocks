@@ -23,9 +23,6 @@ public class MainController {
 	@Autowired
 	MocksService mocksService;
 	
-	@Value("${address.test}")
-	private String test;
-	
 	public MainController() {
 		System.out.println("CTRL");		
 	}
@@ -40,11 +37,6 @@ public class MainController {
 		return mocksService.getByDeveloperId(id);
 	}
 
-	@GetMapping("/test")
-	public String test() {
-		return test;
-	}
-	
 	@DeleteMapping("{id}")
 	public MockControllerDto deleteById(@PathVariable long id) {
 		return mocksService.deleteById(id);
