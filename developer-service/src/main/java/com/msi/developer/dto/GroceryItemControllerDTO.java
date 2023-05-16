@@ -1,7 +1,5 @@
 package com.msi.developer.dto;
 
-import com.msi.developer.model.GroceryItem;
-
 public class GroceryItemControllerDTO {
 	 
 	   private String id;
