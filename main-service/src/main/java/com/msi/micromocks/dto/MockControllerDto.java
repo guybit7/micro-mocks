@@ -1,6 +1,7 @@
 package com.msi.micromocks.dto;
 
 import com.msi.micromocks.entity.Mock;
+import com.msi.micromocks.entity.Variant;
 
 public class MockControllerDto {
 
@@ -12,6 +13,8 @@ public class MockControllerDto {
 
 	private DeveloperControllerDTO developer;
 
+	private Variant variant;
+	
 	public MockControllerDto() {
 		
 	}
@@ -20,6 +23,7 @@ public class MockControllerDto {
 		this.id = mock.getId();
 		this.endpoint = mock.getEndpoint();
 		this.value = mock.getValue();
+		this.variant = mock.getVariant();
 	}
 
 	public Long getId() {
@@ -54,6 +58,13 @@ public class MockControllerDto {
 		this.developer = developer;
 	}
 
-	
+	public Variant getVariant() {
+		return variant;
+	}
+
+	public void setVariant(Variant variant) {
+		this.variant = variant;
+	}
+
 	
 }

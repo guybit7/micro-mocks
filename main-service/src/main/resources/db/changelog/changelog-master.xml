@@ -9,6 +9,8 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
         
-	<include file="classpath:db/changelog/developer/main/liquibase.xml"/>
+	<include file="classpath:db/changelog/user/main/liquibase.xml"/>
+	<include file="classpath:db/changelog/variant/main/liquibase.xml"/>				
+	<include file="classpath:db/changelog/mock_item/main/liquibase.xml"/>
 				
 </databaseChangeLog>

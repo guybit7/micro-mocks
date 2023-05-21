@@ -2,9 +2,12 @@ package com.msi.micromocks.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,13 +25,18 @@ public class Mock {
 	@Column(name = "value")
 	private String value;
 
+	@Column(name = "developer_id")
+	private long developerId;
+	
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
+	@JoinColumn(name = "tutorial_id", nullable = false)
+	
+	private Variant variant;
+	
 	public Mock() {
 		
 	}
 	
-	@Column(name = "developer_id")
-	private long developerId;
-
 	public Long getId() {
 		return id;
 	}
@@ -61,5 +69,14 @@ public class Mock {
 		this.developerId = developerId;
 	}
 
+	public Variant getVariant() {
+		return variant;
+	}
+
+	public void setVariant(Variant variant) {
+		this.variant = variant;
+	}
+
+	
 	
 }
