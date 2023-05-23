@@ -5,27 +5,27 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     
    	<changeSet id="202010211819" author="GuyBiton">
-		<preConditions onFail="MARK_RAN">
-			<not>
-				<tableExists tableName="user" schemaName=""/>
-			</not>
-			<not>
-				<tableExists tableName="variant" schemaName=""/>
-			</not>
-		</preConditions>
+  	  	<preConditions onFail="MARK_RAN">
+		    <not>
+		      <tableExists tableName="mock_item" />
+		    </not>
+	  </preConditions>
 		<createTable tableName="mock_item">
 			<column name="id" type="bigint">
-				<constraints primaryKey="true" primaryKeyName="mock_item_id_pk" />
+				<constraints primaryKey="true" primaryKeyName="mock_item_id_pk" nullable="false"/>
 			</column>
 			<column name="endpoint" type="varchar(250)">
 				<constraints nullable="false"/>
 			</column>
-			<column name="value" type="JSON">
+			<column name="value" type="LONGTEXT">
 				<constraints nullable="false"/>
 			</column>
 			<column name="user_id" type="int"/>
 			<column name="variant_id" type="int"/>
 		</createTable>
+	  	<sql>
+		    ALTER TABLE mock_item MODIFY id INT NOT NULL AUTO_INCREMENT;
+	  	</sql>
 	</changeSet>
 	
 </databaseChangeLog>

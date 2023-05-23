@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -19,7 +20,12 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@ComponentScan({"com.msi.micromocks.controller", "com.msi.micromocks.service", "com.msi.micromocks.infra.encapsulate"})
+@ComponentScan({"com.msi.micromocks.controller", "com.msi.micromocks.service",
+	"com.msi.micromocks.infra.encapsulate",
+	"com.msi.micromocks.interceptors", 
+	"com.msi.micromocks.configurations",
+	"com.msi.micromocks.dto.mapping.converter",
+	})
 @EntityScan("com.msi.micromocks.entity")
 @EnableJpaRepositories("com.msi.micromocks.repository")
 @EnableFeignClients("com.msi.micromocks.feignclients")

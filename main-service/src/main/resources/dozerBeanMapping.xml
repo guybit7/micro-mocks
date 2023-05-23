@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<mappings xmlns="http://dozermapper.github.io/schema/bean-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozermapper.github.io/schema/bean-mapping https://dozermapper.github.io/schema/bean-mapping.xsd">
+
+		<configuration>
+		      <custom-converters>
+	            <converter type="com.msi.micromocks.dto.mapping.converter.MockItemControllerDTOToMockItem">
+			        <class-a>com.msi.micromocks.dto.MockItemControllerDTO</class-a>
+			        <class-b>com.msi.micromocks.entity.MockItem</class-b>
+	            </converter>
+	        </custom-converters>
+		</configuration>
+     
+      <mapping type="one-way" wildcard="true">
+        <class-a>com.msi.micromocks.entity.MockItem</class-a>
+        <class-b>com.msi.micromocks.dto.MockItemControllerDTO</class-b>
+		 
+        <!-- Define field mappings -->
+        
+        <field custom-converter="com.msi.micromocks.dto.mapping.converter.ByteArrayToJsonConverter">
+            <a>value</a>
+            <b>value</b>
+        </field>
+
+     </mapping>
+     
+</mappings>
